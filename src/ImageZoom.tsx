@@ -4,28 +4,30 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "./utils";
 
-type ImageZoomProps = {
+type ImageZoomBaseProps = {
   textMessage?: string;
-  as?: React.ElementType;
 } & React.ImgHTMLAttributes<HTMLImageElement>;
 
-const ImageZoom: React.FC<ImageZoomProps> = ({
+type ImageZoomProps<TAs extends React.ElementType = "img"> = ImageZoomBaseProps & {
+  as?: TAs;
+} & Omit<React.ComponentPropsWithRef<TAs>, keyof ImageZoomBaseProps>;
+
+
+function ImageZoom<TAs extends React.ElementType = "img">({
+  as,
   textMessage = "Click outside the image to close the zoom.",
-  src,
-  alt,
   className,
-  as: ImageComponent = "img",
   ...props
-}) => {
-  const [isZoomed, setIsZoomed] = useState(false)
+}: ImageZoomProps<TAs>) {
+  const [isZoomed, setIsZoomed] = useState(false);
+
+  const ImageComponent = as || "img";
 
   const toggleZoom = () => setIsZoomed(!isZoomed)
 
   return (
     <>
       <ImageComponent
-        src={src}
-        alt={alt}
         className={cn("cursor-zoom-in", className)}
         onClick={toggleZoom}
         {...props}
@@ -49,8 +51,8 @@ const ImageZoom: React.FC<ImageZoomProps> = ({
             >
               <div className="flex flex-col gap-2 justify-center items-center">
                 <img
-                  src={src}
-                  alt={alt}
+                  src={props.src}
+                  alt={props.alt}
                   className="max-h-[90vh] max-w-[90vw] object-contain cursor-zoom-out"
                 />
                 
