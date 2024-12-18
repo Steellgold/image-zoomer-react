@@ -47,12 +47,13 @@ export default function ExamplePage() {
 
 The `ImageZoomer` component extends all valid `<img>` HTML properties and introduces a few additional props:
 
-| Prop           | Type                                | Default                                                    | Description                                              |
-|-----------------|-------------------------------------|------------------------------------------------------------|----------------------------------------------------------|
-| `textMessage`   | `string`                           | "Click outside the image to close the zoom."               | Optional message displayed below the zoomed image.       |
-| `src`          | `string`                           | *Required*                                                 | The image URL to display.                                |
-| `alt`          | `string`                           | *Required*                                                 | Alternative text for accessibility purposes.             |
-| ...props       | `React.ImgHTMLAttributes<HTMLImageElement>` | -                                                        | Any additional valid props for an `<img>` tag.           |
+| Prop           | Type                                    | Default                                                    | Description                                                                 |
+|----------------|-----------------------------------------|------------------------------------------------------------|-----------------------------------------------------------------------------|
+| `as`           | `React.ElementType`                    | `img`                                                      | The component used to render the image. Defaults to `<img>`, but can be `Image` from Next.js or any other compatible component. |
+| `textMessage`  | `string`                               | "Click outside the image to close the zoom."               | Optional message displayed below the zoomed image.                          |
+| `src`          | `string`                               | *Required*                                                 | The image URL to display.                                                   |
+| `alt`          | `string`                               | *Required*                                                 | Alternative text for accessibility purposes.                                |
+| ...props       | `React.ImgHTMLAttributes<HTMLImageElement>` | -                                                          | Any additional valid props for an `<img>` tag.                              |
 
 ### Styles and Classes
 

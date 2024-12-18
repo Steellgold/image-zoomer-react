@@ -6,17 +6,24 @@ import { cn } from "./utils";
 
 type ImageZoomProps = {
   textMessage?: string;
+  as?: React.ElementType;
 } & React.ImgHTMLAttributes<HTMLImageElement>;
 
-// export const ImageZoom: React.FC<ImageZoomProps> = ({ textMessage = "Click outside the image to close the zoom.", src, alt, className, ...props }) => {
-const ImageZoom: React.FC<ImageZoomProps> = ({ textMessage = "Click outside the image to close the zoom.", src, alt, className, ...props }) => {
+const ImageZoom: React.FC<ImageZoomProps> = ({
+  textMessage = "Click outside the image to close the zoom.",
+  src,
+  alt,
+  className,
+  as: ImageComponent = "img",
+  ...props
+}) => {
   const [isZoomed, setIsZoomed] = useState(false)
 
   const toggleZoom = () => setIsZoomed(!isZoomed)
 
   return (
     <>
-      <img
+      <ImageComponent
         src={src}
         alt={alt}
         className={cn("cursor-zoom-in", className)}
