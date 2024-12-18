@@ -35,7 +35,7 @@ export default function ExamplePage() {
       <ImageZoomer
         src="/path/to/image.jpg"
         alt="Beautiful Image"
-        className="w-64 h-auto"
+        style={{ width: '256px', height: 'auto' }}
         textMessage="Click outside the image to close the zoom."
       />
     </div>
@@ -57,13 +57,13 @@ The `ImageZoomer` component extends all valid `<img>` HTML properties and introd
 
 ### Styles and Classes
 
-This component leverages Tailwind CSS utility classes for styling:
+This component uses inline styles by default. Here's a summary of the key styles:
 
-- `cursor-zoom-in` for the base image cursor.
-- `cursor-zoom-out` for the zoomed image cursor.
-- `bg-black bg-opacity-75` for the overlay background.
+- `cursor: zoom-in` for the base image cursor.
+- `cursor: zoom-out` for the zoomed image cursor.
+- `backgroundColor: rgba(0, 0, 0, 0.75)` for the overlay background.
 
-If you are **not using Tailwind CSS**, you can replace these styles with your own custom CSS.
+You can override these styles using the `style` prop or external CSS classes as needed.
 
 ### Animation
 
@@ -74,19 +74,17 @@ If you are **not using Tailwind CSS**, you can replace these styles with your ow
 
 Animations can be customized by forking the component and adjusting the `motion.div` configurations.
 
-## Example with Tailwind CSS
+## Example with Custom CSS
 
-Here’s a practical example including Tailwind for styling:
+Here’s a practical example using custom styles:
 
 ```tsx
 <ImageZoomer
   src="/path/to/your/image.jpg"
   alt="Example image"
-  className="rounded-lg shadow-md"
+  style={{ borderRadius: '8px', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' }}
 />
 ```
-
-If you're not using Tailwind, you can simply override the styles using a `className` or custom CSS.
 
 ## Dependencies
 
@@ -94,9 +92,8 @@ This package relies on the following:
 
 - `react` and `react-dom` (React 18+ recommended)
 - `framer-motion` for animations
-- `clsx` and `tailwind-merge` for utility class management
 
-> Note: Tailwind CSS is used by default for styling. If you do not use Tailwind, you can replace or override the classes.
+> Note: You can use your own styling approach (e.g., CSS modules, styled-components) to customize the appearance.
 
 ## Development and Contribution
 
