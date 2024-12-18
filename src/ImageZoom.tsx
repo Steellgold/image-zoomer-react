@@ -1,8 +1,5 @@
-"use client"
-
-import { useState } from "react"
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "./utils";
 
 type ImageZoomBaseProps = {
   textMessage?: string;
@@ -12,23 +9,23 @@ type ImageZoomProps<TAs extends React.ElementType = "img"> = ImageZoomBaseProps 
   as?: TAs;
 } & Omit<React.ComponentPropsWithRef<TAs>, keyof ImageZoomBaseProps>;
 
-
 function ImageZoom<TAs extends React.ElementType = "img">({
   as,
   textMessage = "Click outside the image to close the zoom.",
-  className,
   ...props
 }: ImageZoomProps<TAs>) {
   const [isZoomed, setIsZoomed] = useState(false);
 
   const ImageComponent = as || "img";
 
-  const toggleZoom = () => setIsZoomed(!isZoomed)
+  const toggleZoom = () => setIsZoomed(!isZoomed);
 
   return (
     <>
       <ImageComponent
-        className={cn("cursor-zoom-in", className)}
+        style={{
+          cursor: "zoom-in",
+        }}
         onClick={toggleZoom}
         {...props}
       />
@@ -39,25 +36,59 @@ function ImageZoom<TAs extends React.ElementType = "img">({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"
+            style={{
+              position: "fixed",
+              inset: "0",
+              zIndex: 50,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "rgba(0, 0, 0, 0.75)",
+            }}
             onClick={toggleZoom}
           >
             <motion.div
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
-              className="relative max-h-full max-w-full overflow-auto"
-              onClick={(e: { stopPropagation: () => any }) => e.stopPropagation()}
+              style={{
+                position: "relative",
+                maxHeight: "100%",
+                maxWidth: "100%",
+                overflow: "hidden",
+              }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex flex-col gap-2 justify-center items-center">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "8px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <img
                   src={props.src}
                   alt={props.alt}
-                  className="max-h-[90vh] max-w-[90vw] object-contain cursor-zoom-out"
+                  style={{
+                    maxHeight: "90vh",
+                    maxWidth: "90vw",
+                    objectFit: "contain",
+                    cursor: "zoom-out",
+                  }}
                 />
-                
+
                 {textMessage && (
-                  <p className="text-white bg-black bg-opacity-50 p-2 rounded-lg">
+                  <p
+                    style={{
+                      color: "white",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      padding: "8px",
+                      borderRadius: "8px",
+                      textAlign: "center",
+                    }}
+                  >
                     {textMessage}
                   </p>
                 )}
@@ -67,7 +98,7 @@ function ImageZoom<TAs extends React.ElementType = "img">({
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
 
 export default ImageZoom;

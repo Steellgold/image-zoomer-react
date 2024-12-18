@@ -1,6 +1,6 @@
 {
   "name": "image-zoomer-react",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -11,11 +11,11 @@
   "license": "ISC",
   "description": "A simple image zoomer component for React",
   "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "clsx": "^2.1.1",
     "framer-motion": "^11.15.0",
-    "tailwind-merge": "^2.5.5",
-    "tailwindcss": "^3.4.17"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.1"
   }
 }
