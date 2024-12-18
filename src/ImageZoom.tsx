@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type ImageZoomBaseProps = {
   textMessage?: string;
+  textBoxStyle?: React.CSSProperties;
 } & React.ImgHTMLAttributes<HTMLImageElement>;
 
 type ImageZoomProps<TAs extends React.ElementType = "img"> = ImageZoomBaseProps & {
@@ -12,6 +13,7 @@ type ImageZoomProps<TAs extends React.ElementType = "img"> = ImageZoomBaseProps 
 function ImageZoom<TAs extends React.ElementType = "img">({
   as,
   textMessage = "Click outside the image to close the zoom.",
+  textBoxStyle,
   ...props
 }: ImageZoomProps<TAs>) {
   const [isZoomed, setIsZoomed] = useState(false);
@@ -87,6 +89,7 @@ function ImageZoom<TAs extends React.ElementType = "img">({
                       padding: "8px",
                       borderRadius: "8px",
                       textAlign: "center",
+                      ...props.textBoxStyle,
                     }}
                   >
                     {textMessage}

@@ -51,6 +51,7 @@ The `ImageZoomer` component extends all valid `<img>` HTML properties and introd
 |----------------|-----------------------------------------|------------------------------------------------------------|-----------------------------------------------------------------------------|
 | `as`           | `React.ElementType`                    | `img`                                                      | The component used to render the image. Defaults to `<img>`, but can be `Image` from Next.js or any other compatible component. |
 | `textMessage`  | `string`                               | "Click outside the image to close the zoom."               | Optional message displayed below the zoomed image.                          |
+| `textBoxStyle` | `React.CSSProperties`                  | `undefined`                                                | Custom styles for the message box displayed below the zoomed image.         |
 | `src`          | `string`                               | *Required*                                                 | The image URL to display.                                                   |
 | `alt`          | `string`                               | *Required*                                                 | Alternative text for accessibility purposes.                                |
 | ...props       | `React.ImgHTMLAttributes<HTMLImageElement>` | -                                                          | Any additional valid props for an `<img>` tag.                              |

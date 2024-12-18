@@ -1,13 +1,17 @@
 {
   "name": "image-zoomer-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["react", "image", "zoomer", "zoom"],
+  "author": {
+    "email": "pro@gaetanhus.fr",
+    "name": "Gaetan H",
+    "url": "https://steellgold.fr/"
+  },
   "license": "ISC",
   "description": "A simple image zoomer component for React",
   "dependencies": {
